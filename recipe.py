@@ -32,6 +32,11 @@ while True:
 
     elif(choice == 2):
         print("View Recipe")
+        sql = "SELECT * FROM `recipes`"
+        mycursor.execute(sql)
+        result = mycursor.fetchall()
+        for i in result:
+            print(i)
     elif(choice == 3):
         print("Searching a Recipe")
     elif (choice == 4):
