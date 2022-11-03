@@ -12,7 +12,8 @@ while True:
     print("3. Search a recipe")
     print("4. Update a recipe")
     print("5. Delete recipe")
-    print("6.exit\n")
+    print("6. Display total recipes in each category")
+    print("7.exit\n")
 
     choice = int(input("Enter an option: "))
     if(choice == 1):
@@ -66,4 +67,13 @@ while True:
         mydb.commit()
         print("Recipe data deleted successfully.")
     elif(choice==6):
+        print("Total recipes in Veg and Non-veg")
+        sql = "SELECT COUNT(*)AS total, recipecategory FROM recipes GROUP BY recipecategory"
+        mycursor.execute(sql)
+        result = mycursor.fetchall()
+        for i in result:
+            print(i)
+
+    
+    elif(choice==7):
         break
