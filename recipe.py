@@ -14,7 +14,8 @@ while True:
     print("5. Delete recipe")
     print("6. Display total recipes in each category")
     print("7. View recipes in a specific category")
-    print("8.exit\n")
+    print("8. Search for recipe with first letter")
+    print("9.exit\n")
 
     choice = int(input("Enter an option: "))
     if(choice == 1):
@@ -82,6 +83,14 @@ while True:
         result = mycursor.fetchall()
         for i in result:
             print(i)
+    elif(choice == 8):
+        print("Search a recipe by letter")
+        rletter = input("Enter the letter to search: ")
+        sql = "SELECT `title`, `description`, `preparedby`, `ingredients`, `recipecategory` FROM `recipes` WHERE `title` LIKE'"+rletter+"%'"
+        mycursor.execute(sql)
+        result = mycursor.fetchall()
+        for i in result:
+            print(i)
     
-    elif(choice==8):
+    elif(choice==9):
         break
